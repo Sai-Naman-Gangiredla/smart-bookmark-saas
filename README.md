@@ -171,5 +171,82 @@ Full-Stack Developer \| Problem Solver \| Curious Builder
 
 ------------------------------------------------------------------------
 
-✨ Built with intent, deployed with confidence.
+## 🧗 Challenges & What I Learned
 
+This project looked simple at first glance — but the real complexity
+revealed itself in production.
+
+### 🔁 Realtime Sync Edge Case
+
+One of the biggest challenges was ensuring **true realtime updates across tabs**.
+Initially, changes only reflected after a manual refresh.
+
+**Solution:**  
+Implemented Supabase Realtime subscriptions properly and handled state
+updates carefully to prevent stale UI rendering. This required debugging
+event payloads, refining listeners, and syncing UI state with database
+events cleanly.
+
+---
+
+### 🌍 OAuth Redirect Failures in Production
+
+After deployment, authentication worked locally — but failed in production.
+Supabase was redirecting to incorrect paths.
+
+**Root Cause:**  
+Incorrect Site URL and Redirect URL configuration.
+
+**Solution:**  
+Configured:
+
+- Correct production domain in Supabase Auth → URL Configuration  
+- Proper redirect handling in Next.js  
+- Clean environment variable setup in Vercel  
+
+This reinforced the importance of understanding OAuth flow deeply —
+not just copying config values.
+
+---
+
+### 🔐 Environment Variable Mistakes
+
+Early deployment attempts failed due to:
+
+- Incorrect variable names
+- Using wrong Supabase keys
+- Misunderstanding publishable vs legacy anon keys
+
+**Lesson:**  
+Production setups fail quietly if configuration is wrong.
+Naming conventions and environment clarity matter more than expected.
+
+---
+
+### 🎯 Drag & Drop Persistence
+
+Drag-and-drop reordering was visually working but not persisting
+correctly in the database.
+
+**Solution:**  
+Implemented position-based ordering logic and ensured updates were
+atomically synced to the database.
+
+This taught me that UI polish must be backed by database consistency.
+
+---
+
+## 🧠 What This Project Really Taught Me
+
+- Realtime systems require intentional state management.
+- OAuth is easy to start, hard to perfect.
+- Deployment issues are configuration issues.
+- Production ≠ Local.
+- Clean UI means nothing without reliable backend logic.
+
+This project wasn’t just about bookmarks —
+it was about building something stable under real-world constraints.
+
+------------------------------------------------------------------------
+
+✨ Built with intent, deployed with confidence.
