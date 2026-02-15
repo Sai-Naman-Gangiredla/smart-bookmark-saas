@@ -1,166 +1,175 @@
-# 🚀 Smart Bookmark Manager  
-### Organize your web. Own your focus.
+# 🔗 BookmarkStack
 
-> A premium SaaS-style bookmark manager built with real-time sync, secure authentication, and a polished dark UI — designed for speed, simplicity, and elegance.
+> A smart, real-time bookmark manager --- built for developers,
+> obsessives, and anyone who wants their links to *work for them*.
 
-🌐 Live App: https://bookmarkstack.vercel.app  
-🛠 Built with: Next.js · Supabase · Vercel  
+**Live:** https://bookmarkstack.vercel.app
 
----
+BookmarkStack is more than a bookmark tool --- it's a clean,
+realtime-powered dashboard that adapts to your workflow. Built with
+Next.js, Supabase, and deployed on Vercel, this project showcases a
+full-stack mindset with production-grade features.
 
-## ✨ Why This Exists
+------------------------------------------------------------------------
 
-Modern browsers store bookmarks.  
-This app **manages attention**.
+## 🚀 What It Does
 
-Smart Bookmark Manager is a full-stack, real-time web application that allows users to securely store, organize, search, sort, and rearrange bookmarks with instant cross-tab synchronization.
+✔ Google login (OAuth via Supabase)\
+✔ Save bookmarks with instant realtime sync\
+✔ Manual drag & drop reordering\
+✔ Search + sort (newest, oldest, A-Z, Z-A)\
+✔ Soft delete (Trash) system\
+✔ Responsive premium dark UI\
+✔ Live syncing across tabs (no refresh needed)
 
-Built as a production-ready SaaS-style application with authentication, protected routes, and clean UX.
+------------------------------------------------------------------------
 
----
+## 🛠 Technologies Used
 
-## 🧠 Core Features
-
-- 🔐 **Google Authentication (Supabase Auth)**
-- ⚡ **Real-time Sync Across Tabs**
-- 🌓 Premium **Dark SaaS UI**
-- 🔍 Instant Bookmark Search
-- ↕️ Multiple Sorting Modes
-  - Newest
-  - Oldest
-  - Manual (Drag & Drop)
-- 🗑 Soft Delete with Trash System
-- 🔄 Cross-tab live updates (no manual refresh)
-- 📱 Fully Responsive Design
-- 🚀 Deployed on Vercel (Production Ready)
-
----
-
-## 🏗 Tech Stack
-
-| Layer        | Technology |
+  | Layer        | Technology |
 |-------------|------------|
 | Frontend     | Next.js (App Router) |
 | Backend      | Supabase (Database + Auth + Realtime) |
 | Styling      | Tailwind CSS |
 | Deployment   | Vercel |
 | Database     | PostgreSQL (via Supabase) |
+------------------------------------------------------------------------
 
----
+## 🧠 Why This Is Cool
 
-## 🔐 Authentication Flow
+This isn't just a CRUD app --- it demonstrates:
 
-- OAuth with Google
-- Redirect-based session handling
-- Protected dashboard route
-- Secure session persistence
-- Production-ready redirect configuration
+-   **Realtime event handling** (Supabase Realtime)
+-   **Proper auth & protected routes**
+-   **Secure environment config for production**
+-   **Drag & drop UI state synced to database**
+-   **Soft delete + trash workflow**
 
----
+All of this runs with realtime feedback and a polished interface.
 
-## ⚙️ Real-Time Architecture
+------------------------------------------------------------------------
 
-Supabase Realtime subscriptions enable:
+## 📁 Core Features
 
-- Live updates across multiple tabs
-- Automatic UI refresh on insert/update/delete
-- Manual drag ordering synced instantly
+### 🔐 Authentication
 
-This eliminates stale state issues and ensures true multi-tab consistency.
+Sign in securely with Google. Session logic is handled with Supabase
+Auth and protected routes.
 
----
+### ⚡ Realtime Sync
 
-## 🎨 UI Philosophy
+Bookmarks update live across multiple tabs/devices without refresh.
 
-- Minimal
-- Elegant
-- Focus-first
-- Dark by default
-- Smooth transitions
-- Clean component spacing
+### 📌 Bookmark Management
 
-Inspired by modern SaaS dashboards.
+-   Create bookmarks
+-   Edit titles and URLs
+-   Soft-delete with Trash
+-   Manual reorder with database persistence
 
----
+### 🔍 Search & Sort
 
-## 📦 Project Structure
+Instant search + flexible sorting modes (manual, newest, oldest,
+alphabetical).
 
-app/
-├── dashboard/
-├── login/
-├── layout.tsx
-├── page.tsx
-components/
-├── BookmarkCard.tsx
-├── Navbar.tsx
-lib/
-├── supabaseClient.ts
+------------------------------------------------------------------------
 
+## 👨‍💻 Installation (Local Dev)
 
----
+1.  Clone the repo:
 
-## 🚀 Deployment
+``` bash
+git clone https://github.com/yourusername/smart-bookmark-saas.git
+```
 
-Hosted on Vercel with:
+2.  Install dependencies:
 
-- Production environment variables
-- Secure Supabase keys
-- Custom project domain
-- Optimized build configuration
+``` bash
+npm install
+```
 
----
+3.  Create `.env.local`:
 
-## 🛡 Production Hardening
+``` env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_publishable_key
+```
 
-- Redirect URL validation
-- Environment variable isolation
-- Auth URL configuration
-- Error state handling
-- Edge-case route protection
+4.  Run the dev server:
 
----
+``` bash
+npm run dev
+```
 
-## 📌 Lessons & Engineering Decisions
+------------------------------------------------------------------------
 
-- Drag & Drop only works in manual sort mode (logical UX separation)
-- Realtime listeners must be cleaned up properly
-- Supabase redirect URLs must exactly match production domain
-- UI polish impacts perceived product quality significantly
+## 🧩 Production Setup
 
----
+1.  Deploy to Vercel
+2.  Add environment variables in Vercel
+3.  In Supabase Auth → URL config:
 
-## 🧩 Future Enhancements
+<!-- -->
 
-- Folder grouping
-- Tags
-- Bookmark preview thumbnails
-- Public share mode
-- Usage analytics
-- Mobile-first PWA optimization
+    https://your-vercel-domain.vercel.app
+    http://localhost:3000
 
----
+------------------------------------------------------------------------
+
+## 📌 Project Structure
+
+    ├── app/
+    │   ├── dashboard/
+    │   ├── login/
+    │   ├── trash/
+    │   ├── layout.tsx
+    │   └── page.tsx
+    ├── components/
+    ├── lib/
+    │   └── supabase.ts
+    ├── tailwind.config.js
+    └── README.md
+
+------------------------------------------------------------------------
+
+## 🚦 How Realtime Works
+
+Supabase Realtime is used to subscribe to bookmark changes: - Insert -
+Update - Delete
+
+Every client sees changes instantly without refresh.
+
+This makes collaborative or multi-tab workflows smooth.
+
+------------------------------------------------------------------------
+
+## 🧠 Future Improvements
+
+Ideas for next versions:
+
+-   Categories or tags
+-   Export / import bookmarks
+-   Public shareable bookmark pages
+-   User profiles
+-   Analytics dashboard
+
+------------------------------------------------------------------------
+
+## 💡 Final Thought
+
+BookmarkStack is built with real-world workflows in mind --- fluid,
+realtime, and production-ready.\
+It's clean enough for daily use and polished enough to show in your
+portfolio.
+
+------------------------------------------------------------------------
 
 ## 🧑‍💻 Author
 
-**Sai Naman Gangiredla**  
-Full-stack developer passionate about building clean, production-grade web apps.
+**Sai Naman Gangiredla**\
+Full-Stack Developer \| Problem Solver \| Curious Builder
 
----
+------------------------------------------------------------------------
 
-## 🌟 Final Thought
+✨ Built with intent, deployed with confidence.
 
-This isn’t just a bookmark manager.  
-It’s a small demonstration of:
-
-- Architecture clarity  
-- Real-time systems understanding  
-- Authentication flow control  
-- UI/UX discipline  
-- Deployment awareness  
-
-Built with intent.  
-Shipped with confidence.
-
----
-
-⭐ If you found this interesting, feel free to fork, explore, or improve it.
